@@ -1,3 +1,4 @@
+require('dotenv').config()
 module.exports = {
-    JWT_TOKEN: "okewnmfionew9032r32irni3nr"
+    JWT_TOKEN: process.env.TOKEN
 }

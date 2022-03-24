@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {JWT_TOKEN} = require('../keys')
 const authorization = require('../middleware/loggedin')
-nednckoenco
+
 router.get('/test', authorization, (req,res) => {
     res.send("Hola")
 })

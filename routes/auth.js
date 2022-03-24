@@ -13,15 +13,15 @@ router.post('/signup', (req,res) => {
     if(!email || !name || !password || !username){
         return res.status(422).json({error: "Please add all the fields"})
     }
-    User.findone({emai: email})
+    User.findOne({email: email})
     .then((savedUser) => {
         if(savedUser){
             return res.status(422).json({error: "Email already exist"})
         }
-        User.findone({username: username})
+        User.findOne({username: username})
         .then((savedName) => {
             if(savedName){
-                return res.status(422).json({error: "Email already exist"})
+                return res.status(422).json({error: "Username already exist"})
             }
             bcrypt.hash(password, 12)
             .then(hashedPassword => {

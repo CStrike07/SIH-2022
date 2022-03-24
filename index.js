@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
 const mongoose =require('mongoose')
-const {MONGOURI} = require('./keys')
+require('dotenv').config()
 const PORT = 7000;
 
 require('./models/user')
 
 app.use(express.json())
 app.use(require('./routes/auth'))
+
+const MONGOURI = process.env.DB_URI
 
 mongoose.connect(MONGOURI, {
     useNewUrlParser: true,

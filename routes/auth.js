@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-//const User = mongoose.model("User")
+const User = mongoose.model("User")
 const bcrypt = require('bcryptjs')
 
 router.get('/', (req,res) => {

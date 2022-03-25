@@ -1,5 +1,6 @@
 import React from "react";
 import "./Post.css";
+import Comments from "./Comments";
 import Avatar from "@material-ui/core/Avatar";
 
 function Post({ username, caption, imageUrl }) {
@@ -17,6 +18,9 @@ function Post({ username, caption, imageUrl }) {
       <h4 className="post_text">
         <strong>{username}</strong> {caption}
       </h4>
+      <div className="post_comments">
+      <Comments />
+      </div>
     </div>
   );
 }

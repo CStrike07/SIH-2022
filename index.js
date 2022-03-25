@@ -5,9 +5,11 @@ require('dotenv').config()
 const PORT = 7000;
 
 require('./models/user')
+require('./models/med')
 
 app.use(express.json())
 app.use(require('./routes/auth'))
+app.use(require('./routes/meds'))
 
 const MONGOURI = process.env.DB_URI
 

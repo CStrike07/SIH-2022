@@ -16,8 +16,8 @@ router.get('/', (req,res) => {
 })
 
 router.post('/signup', (req,res) => {
-    const {name, username, email, password} = req.body
-    if(!email || !name || !password || !username){
+    const {name, username, role, email, password} = req.body
+    if(!email || !name || !password || !username || !role){
         return res.status(422).json({error: "Please add all the fields"})
     }
     User.findOne({email: email})
@@ -35,6 +35,7 @@ router.post('/signup', (req,res) => {
                 const user = new User({
                     name,
                     username,
+                    role,
                     email,
                     password:hashedPassword
                 })

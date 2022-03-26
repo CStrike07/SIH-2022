@@ -9,10 +9,12 @@ const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/u
 const res = require('express/lib/response')
 const server = http.createServer(app)
 const io = socketio(server)
+//const cors = require('cors')
 require('dotenv').config()
 const PORT = 7000;
 const botName = 'Discussion Forum'
 
+//app.use(cors())
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', socket => {

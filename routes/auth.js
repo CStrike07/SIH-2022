@@ -80,4 +80,9 @@ router.post('/signin',(req,res)=>{
     })
 })
 
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/home');
+});
+
 module.exports = router

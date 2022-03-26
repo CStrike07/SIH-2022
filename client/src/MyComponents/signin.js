@@ -28,7 +28,7 @@ export default function Signin() {
                window.alert(data.error)
            }
            else{
-               history.push('/discussion')
+               history.push('/home')
            }
         }).catch(err=>{
             console.log(err)

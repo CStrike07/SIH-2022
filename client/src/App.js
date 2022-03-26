@@ -7,6 +7,7 @@ import ocr from './MyComponents/ocr';
 import Home from './MyComponents/home';
 import About from './MyComponents/about';
 import Footer from './MyComponents/footer';
+import Logout from './MyComponents/logout';
 // import Chat from './MyComponents/chat';
 import KommunicateChat from './MyComponents/chat';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
         <Route  path="/home" exact component={Home}/>
         <Route  path="/about" exact component={About}/>
         <Route  path="/chat" exact component={KommunicateChat}/>
+        <Route  path="/logout" exact component={Logout}/>
 
       </Switch>
       <div>

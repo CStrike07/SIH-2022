@@ -7,11 +7,7 @@ const jwt = require('jsonwebtoken')
 const {JWT_TOKEN} = require('../keys')
 const authorization = require('../middleware/loggedin')
 
-router.get('/test', authorization, (req,res) => {
-    res.send("Hola")
-})
-
-router.get('/', (req,res) => {
+router.get('/home', (req,res) => {
     res.send("hello from auth")
 })
 

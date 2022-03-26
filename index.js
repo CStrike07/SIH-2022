@@ -6,13 +6,14 @@ const http = require('http')
 const socketio = require('socket.io')
 const formatMessage = require('./utils/messages')
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users')
+const res = require('express/lib/response')
 const server = http.createServer(app)
 const io = socketio(server)
 require('dotenv').config()
 const PORT = 7000;
 const botName = 'Discussion Forum'
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(__dirname + '/public'));
 
 io.on('connection', socket => {
 
@@ -71,6 +72,14 @@ app.use(express.json())
 app.use(require('./routes/auth'))
 app.use(require('./routes/post'))
 app.use(require('./routes/meds'))
+
+app.get('/', (req,res) => {
+    res.redirect('/home')
+})
+
+app.get('/discussion', (req,res) => {
+    res.sendFile('index.html', { root: './public' })
+})
 
 server.listen(PORT, () => {
     console.log("Server is running on ", PORT)

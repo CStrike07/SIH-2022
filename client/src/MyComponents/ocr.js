@@ -8,7 +8,7 @@ function App() {
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
   const [language, setLanguage] = useState("eng");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState([]);
   const [meds, setMeds] = useState([]);
   const [searchTerm,setSearchTerm] = useState("");
 
@@ -17,7 +17,7 @@ function App() {
   };
 
   const processImage = () => {
-    setResult("");
+    setResult([" "]);
     setProgress(0);
     Tesseract.recognize(file, language, {
       logger: (m) => {
@@ -27,8 +27,7 @@ function App() {
       },    }).then(({ data: { text } }) => {
       // setResult(text);
       setResult(text);
-      setSearchTerm(text);
-      console.log(result);
+      //console.log(result);
       // const splitarr=result.split(" ");
       // console.log(splitarr);
     });
@@ -67,8 +66,6 @@ function App() {
           <div className="col-md-9">
             <div className="input-group"> <input type="text" placeholder='Search medicines or substances!' className="form-control" value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value);}}/> <span className="input-group-addon"><input type="submit" value="Search" className="btn btn-primary" /></span> </div>
             {meds.filter((val)=>{
-              if(result!="") 
-                setSearchTerm(result);
               if(searchTerm==="")
                   return "";
               if(val.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -97,20 +94,6 @@ function App() {
       <div>
         <progress value={progress} max={1} />
       </div>
-      {meds.filter((val)=>{
-              if(searchTerm==="")
-                  return "";
-              if(val.name.toLowerCase().includes(searchTerm.toLowerCase()))
-              {
-                return val;
-              }
-              }).map((val,key)=>{
-            return (
-              <div className="searchRes" key={key}>
-                <p>{val.type}</p>
-              </div>
-            );
-          })}
       {result !== "" && (
         <div style={{ marginTop: 30, fontSize:20 }}>
           Result: {result}
